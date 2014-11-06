@@ -17,14 +17,16 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import java.util.HashMap;
 import java.util.Map;
 
-
-
+import javafx.scene.shape.MoveTo;
 
 
 public class DotConnect implements ApplicationListener {
@@ -35,12 +37,14 @@ public class DotConnect implements ApplicationListener {
 
     @Override
     public void create() {
-        stage = new MainStage();
-        stage.setViewport(new ViewPort());
+        stage = new Stage();
         Gdx.input.setInputProcessor(stage);
-
         Jet myActor = new Jet();
-         
+        MoveToAction moveAction = new MoveToAction();
+        moveAction.setPosition(300f, 0f);
+        moveAction.setDuration(10f);
+        myActor.addAction(moveAction);
+
         stage.addActor(myActor);
     }
 
@@ -52,6 +56,7 @@ public class DotConnect implements ApplicationListener {
     @Override
     public void render() {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        stage.act(Gdx.graphics.getDeltaTime());
         stage.draw();
     }
 
