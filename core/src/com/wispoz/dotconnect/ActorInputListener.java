@@ -2,12 +2,20 @@ package com.wispoz.dotconnect;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 
 /**
  * Created by wispoz on 06.11.14.
  */
 public class ActorInputListener extends InputListener implements InputProcessor {
+    Actor jet;
+
+    public ActorInputListener(Actor jet){
+        this.jet = jet;
+    }
 
     @Override
     public boolean keyDown(int keycode) {
@@ -58,5 +66,16 @@ public class ActorInputListener extends InputListener implements InputProcessor 
         // TODO Auto-generated method stub
         return false;
     }
-
+    @Override
+    public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+        Gdx.app.log("BUBBLE", "touchdown");
+        return true;  // must return true for touchUp event to occur
+    }
+    @Override
+    public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+        MoveToAction moveAction = new MoveToAction();
+        moveAction.setPosition(x, y);
+        moveAction.setDuration(10f);
+        this.jet.addAction(moveAction);
+    }
 }

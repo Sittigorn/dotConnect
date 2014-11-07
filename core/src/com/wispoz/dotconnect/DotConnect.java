@@ -25,7 +25,6 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import javafx.scene.shape.MoveTo;
 
 
@@ -37,13 +36,11 @@ public class DotConnect implements ApplicationListener {
 
     @Override
     public void create() {
+
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
         Jet myActor = new Jet();
-        MoveToAction moveAction = new MoveToAction();
-        moveAction.setPosition(300f, 0f);
-        moveAction.setDuration(10f);
-        myActor.addAction(moveAction);
+
 
         stage.addActor(myActor);
     }
