@@ -86,8 +86,8 @@ public class ActorInputListener extends InputListener implements InputProcessor 
          MoveToAction moveAction = pool.obtain();
          moveAction.setPool(pool);
          moveAction.setPosition(x, y);
-         moveAction.setDuration(10f);
-         moveAction.setInterpolation(Interpolation.bounceOut);
+         moveAction.setDuration(2f);
+         moveAction.setInterpolation(Interpolation.pow2Out);
          this.jet.addAction(moveAction);
          this.prev = moveAction;
 
