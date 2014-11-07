@@ -3,30 +3,8 @@ package com.wispoz.dotconnect;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.input.GestureDetector;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.input.GestureDetector.GestureListener;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
-
-import java.util.HashMap;
-import java.util.Map;
-import javafx.scene.shape.MoveTo;
-
 
 public class DotConnect implements ApplicationListener {
 
@@ -37,11 +15,11 @@ public class DotConnect implements ApplicationListener {
     @Override
     public void create() {
 
-        stage = new Stage();
+        stage = new MainStage();
+        stage.setViewport(new ViewPort());
+        stage.addListener(new StageInputListener());
         Gdx.input.setInputProcessor(stage);
         Jet myActor = new Jet();
-
-
         stage.addActor(myActor);
     }
 

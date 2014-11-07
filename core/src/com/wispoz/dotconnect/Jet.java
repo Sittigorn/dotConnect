@@ -18,6 +18,7 @@ public class Jet extends Actor {
        public Jet(){
            setBounds(getX(),getY(),texture.getWidth(),texture.getHeight());
            this.addListener(inputListener);
+           setName("circle");
        }
     @Override
     public void draw(Batch batch, float alpha){
