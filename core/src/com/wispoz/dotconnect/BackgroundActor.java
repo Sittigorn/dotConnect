@@ -14,9 +14,9 @@ public class BackgroundActor extends Actor {
     private Sprite backgroundSprite;
 
     public BackgroundActor() {
-        backgroundTexture = new Texture("Splash.png");
+        backgroundTexture = new Texture("Levels01night.png");
         backgroundSprite = new Sprite(backgroundTexture);
-        backgroundSprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+       // backgroundSprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
     @Override
