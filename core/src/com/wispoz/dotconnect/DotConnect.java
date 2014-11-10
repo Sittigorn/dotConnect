@@ -29,6 +29,7 @@ public class DotConnect implements ApplicationListener {
         stage.addActor(foreground);
         foreground.addActor(new Buttons());
         background.addActor(new BackgroundActor());
+
         stage.addListener(new StageInputListener());
         Gdx.input.setInputProcessor(stage);
     }
