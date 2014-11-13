@@ -24,6 +24,7 @@ public class DotConnect implements ApplicationListener {
     };
     @Override
     public void create() {
+        Gdx.app.log("SCREEN",Gdx.graphics.getWidth()+":WH:"+ Gdx.graphics.getHeight());
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.position.set(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, 0);
         stage = new MainStage();
@@ -68,7 +69,7 @@ public class DotConnect implements ApplicationListener {
 
     @Override
     public void resize(int width, int height) {
-        stage.getViewport().update(width, height, true);
+    //    stage.getViewport().update(width, height, true);
     }
 
     @Override
