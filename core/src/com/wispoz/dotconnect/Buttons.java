@@ -17,6 +17,7 @@ public class Buttons extends Actor {
         backgroundTexture = new Texture("Buttons.png");
         regions = new TextureRegion(backgroundTexture, 60, 180, 60,60);
         setBounds(getX(), getY(), 60, 60);
+        setName("menu_button");
         this.addListener(inputListener);
     }
     public void draw(Batch batch, float alpha) {
