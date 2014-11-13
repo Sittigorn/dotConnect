@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.utils.Pool;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.FillViewport;
 
 public class DotConnect implements ApplicationListener {
 
@@ -24,9 +24,10 @@ public class DotConnect implements ApplicationListener {
     };
     @Override
     public void create() {
-        camera = new OrthographicCamera();
+        camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        camera.position.set(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, 0);
         stage = new MainStage();
-        stage.setViewport(new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(),camera));
+        stage.setViewport(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(),camera));
 
         Group background = new Group();
         background.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -48,7 +49,7 @@ public class DotConnect implements ApplicationListener {
 
     @Override
     public void render() {
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT | (Gdx.graphics.getBufferFormat().coverageSampling?GL20.GL_COVERAGE_BUFFER_BIT_NV:0));
         if(Gdx.input.isTouched()) {
             Vector3 touchPos = new Vector3();
             touchPos.set(Gdx.input.getX(), Gdx.input.getY(), Gdx.input.getY());
@@ -60,7 +61,7 @@ public class DotConnect implements ApplicationListener {
             stage.getRoot().findActor("menu_button").addAction(moveAction);
 
         }
-
+        camera.update();
         stage.act(Gdx.graphics.getDeltaTime());
         stage.draw();
     }
